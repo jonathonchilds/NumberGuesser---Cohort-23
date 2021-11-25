@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace NumberGuesserExplorerMode
 {
@@ -8,10 +9,9 @@ namespace NumberGuesserExplorerMode
         {
             Greeting();
 
-            Console.WriteLine($"Is you number 512? Please type Y if so; otherwise type h " +
-                              "if your number is higher or type l if your number is lower.");
-
             GuessingLoop();
+
+            closingStatement();
 
         }
         static void Greeting()
@@ -36,23 +36,46 @@ namespace NumberGuesserExplorerMode
         }
         static void GuessingLoop()
         {
+            var maxGuess = 1024;
+            var minGuess = 0;
+
+            Console.WriteLine($"Is you number 512? Please type Y if so; otherwise type h " +
+                              "if your number is higher or type l if your number is lower.");
             var response = Console.ReadLine();
 
-            if (response == "y")
+            var affirmatives = new List<string>() { "y", "Y", "Yes", "yes", "YES", "YUS", "yep", "Yeah", "Yep" };
+            var higher = new List<string>() { "n", "N", "no", "NO", "No", "Nope", "nope", "Nerp", "nerp" };
+            var lower = new List<string>() { "l", "L", "Lower", "lower" };
+            var highGuess = new List<string>() { "h", "H", "higher", "Higher" };
+
+            if (affirmatives.Contains(response))
             {
                 Console.WriteLine("Well that was easy! Only 1 guess!");
+                //     }
+                //     else if (higher.Contains(response))
+                //     {
+
+                //     }
+                //     else if (negat == "h")
+                //     {
+                //         var newGuess = maxGuess / 2;
+                //         Console.WriteLine($"Is {newGuess} your number?");
+                //     }
+                //     else if (response == "l")
+                //     {
+                //         var newGuess = minGuess / 2;
+                //         Console.WriteLine($"Is {newGuess} your number?");
+                //     }
+                //     else
+                //     {
+                //         Console.WriteLine("Please enter an acceptable response.");
             }
-            else if (response == "h")
-            {
-                var newGuess = 1024 / 2;
-                return newGuess;
-            }
-            else if (response == "l")
-            {
-                var newGuess = 512 / 2;
-                return newGuess;
-            }
+        }
+        static void closingStatement()
+        {
+            Console.WriteLine("Bet you couldn't do that as quickly.");
         }
     }
 }
+
 
