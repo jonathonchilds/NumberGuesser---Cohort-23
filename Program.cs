@@ -10,7 +10,7 @@ namespace NumberGuesserExplorerMode
             var affirmativeUserResponse = new List<string>() { "y", "Y", "Yes", "yes", "YES", "yasss", "YAS", "YUS", "yup", "yuppp", "yep", "Yeah", "Yep" };
             var negativeUserResponse = new List<string>() { "n", "N", "no", "NO", "No", "Nope", "nope", "Nerp", "nerp" };
             var lowerGuess = new List<string>() { "l", "L", "Lower", "lower", "LOWER" };
-            var highGuess = new List<string>() { "h", "H", "higher", "Higher", "HIGHER" };
+            var higherGuess = new List<string>() { "h", "H", "higher", "Higher", "HIGHER" };
 
             var passingMaxValue = int.Parse(Greeting());
 
@@ -18,10 +18,15 @@ namespace NumberGuesserExplorerMode
 
             var response = IsYourNumber(guess);
 
-            if (highGuess.Contains(response))
+            if (higherGuess.Contains(response))
             {
                 NumberIsHigherLoop(passingMaxValue, guess);
             }
+            else if (lowerGuess.Contains(response)) ;
+            {
+                NumberIsLowerLoop(guess);
+            }
+            ClosingStatement();
 
 
         }
@@ -65,7 +70,17 @@ namespace NumberGuesserExplorerMode
             Console.WriteLine($"Is your number {newGuess}?");
             var response = Console.ReadLine();
             return response;
-
+        }
+        static string NumberIsLowerLoop(int guess)
+        {
+            var newGuess = (0 + guess) / 2;
+            Console.WriteLine($"Is your number {newGuess}?");
+            var response = Console.ReadLine();
+            return response;
+        }
+        static void ClosingStatement()
+        {
+            Console.WriteLine("Well that was easy.");
         }
     }
 
