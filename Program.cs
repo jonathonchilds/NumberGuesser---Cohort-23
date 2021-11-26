@@ -7,14 +7,14 @@ namespace NumberGuesserExplorerMode
     {
         static void Main(string[] args)
         {
-            Greeting();
+            int passingMaxValue = int.Parse(Greeting());
 
-            GuessingLoop();
+            GuessingLoop(passingMaxValue);
 
             closingStatement();
 
         }
-        static void Greeting()
+        static string Greeting()
         {
             Console.WriteLine();
             Console.WriteLine();
@@ -33,12 +33,13 @@ namespace NumberGuesserExplorerMode
             Console.WriteLine();
             Console.WriteLine("Do not enter your number! Keep it in your head, please.");
             Console.WriteLine();
+            var userEnteredMaxValue = Console.ReadLine();
+            return userEnteredMaxValue;
         }
-        static void GuessingLoop()
+        static int GuessingLoop(int passingMaxValue)
         {
-            var initialMaxGuess = 1024;
-            var initialMinGuess = 0;
-            var initialGuess = 512;
+
+            var initialGuess = passingMaxValue / 2;
 
             Console.WriteLine($"Is you number {initialGuess}? Please type Y if so; otherwise type h " +
                               "if your number is higher or type l if your number is lower.");
@@ -49,16 +50,20 @@ namespace NumberGuesserExplorerMode
             var lowerGuess = new List<string>() { "l", "L", "Lower", "lower" };
             var highGuess = new List<string>() { "h", "H", "higher", "Higher" };
 
-            if (affirmativeUserResponse.Contains(response))
+            while (affirmativeUserResponse.Contains(response) != true)
             {
                 Console.WriteLine("Well that was easy! Only 1 guess!");
             }
-            else if (highGuess.Contains(response))
+
+            if (highGuess.Contains(response))
             {
-                var newMinimumGuessValue = initialMaxGuess / 2;
-                var newGuess = (initialMaxGuess + newMinimumGuessValue) / 2;
-                initialGuess = newGuess;
-                Console.WriteLine();
+                var newMinimumGuessValue = initialGuess / 2;
+                var newGuess = (initialGuess + newMinimumGuessValue) / 2;
+
+
+                // Console.WriteLine($"Is you number {initialGuess}? Please type Y if so; otherwise type h " +
+                //               "if your number is higher or type l if your number is lower.");
+                // var response = Console.ReadLine();
             }
             // else if (negat == "h")
             // {
