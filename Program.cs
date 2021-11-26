@@ -7,11 +7,22 @@ namespace NumberGuesserExplorerMode
     {
         static void Main(string[] args)
         {
-            int passingMaxValue = int.Parse(Greeting());
+            var affirmativeUserResponse = new List<string>() { "y", "Y", "Yes", "yes", "YES", "yasss", "YAS", "YUS", "yup", "yuppp", "yep", "Yeah", "Yep" };
+            var negativeUserResponse = new List<string>() { "n", "N", "no", "NO", "No", "Nope", "nope", "Nerp", "nerp" };
+            var lowerGuess = new List<string>() { "l", "L", "Lower", "lower", "LOWER" };
+            var highGuess = new List<string>() { "h", "H", "higher", "Higher", "HIGHER" };
 
-            GuessingLoop(passingMaxValue);
+            var passingMaxValue = int.Parse(Greeting());
 
-            closingStatement();
+            var guess = NumberGuess(passingMaxValue);
+
+            var response = IsYourNumber(guess);
+
+            if (affirmativeUserResponse.Contains(response))
+            {
+                NumberIsHigherLoop(passingMaxValue, guess);
+            }
+
 
         }
         static string Greeting()
@@ -29,62 +40,60 @@ namespace NumberGuesserExplorerMode
             Console.WriteLine();
             Console.WriteLine("My goal is to guess a number that you have chosen in your mind.");
             Console.WriteLine();
-            Console.WriteLine("You may pick any number between 1 - 1,024.");
+            Console.WriteLine("You may pick any whole number you'd like.");
             Console.WriteLine();
             Console.WriteLine("Do not enter your number! Keep it in your head, please.");
             Console.WriteLine();
+            Console.WriteLine("Now do me a favor and type any number that is higher than the number you've picked.");
             var userEnteredMaxValue = Console.ReadLine();
             return userEnteredMaxValue;
         }
-        static int GuessingLoop(int passingMaxValue)
+        static int NumberGuess(int passingMaxValue)
         {
-
-            var initialGuess = passingMaxValue / 2;
-
-            Console.WriteLine($"Is you number {initialGuess}? Please type Y if so; otherwise type h " +
-                              "if your number is higher or type l if your number is lower.");
-            var response = Console.ReadLine();
-
-            var affirmativeUserResponse = new List<string>() { "y", "Y", "Yes", "yes", "YES", "YUS", "yep", "Yeah", "Yep" };
-            var negativeUserResponse = new List<string>() { "n", "N", "no", "NO", "No", "Nope", "nope", "Nerp", "nerp" };
-            var lowerGuess = new List<string>() { "l", "L", "Lower", "lower" };
-            var highGuess = new List<string>() { "h", "H", "higher", "Higher" };
-
-            while (affirmativeUserResponse.Contains(response) != true)
-            {
-                Console.WriteLine("Well that was easy! Only 1 guess!");
-            }
-
-            if (highGuess.Contains(response))
-            {
-                var newMinimumGuessValue = initialGuess / 2;
-                var newGuess = (initialGuess + newMinimumGuessValue) / 2;
-
-
-                // Console.WriteLine($"Is you number {initialGuess}? Please type Y if so; otherwise type h " +
-                //               "if your number is higher or type l if your number is lower.");
-                // var response = Console.ReadLine();
-            }
-            // else if (negat == "h")
-            // {
-            //     var newGuess = maxGuess / 2;
-            //     Console.WriteLine($"Is {newGuess} your number?");
-            // }
-            // else if (response == "l")
-            // {
-            //     var newGuess = minGuess / 2;
-            //     Console.WriteLine($"Is {newGuess} your number?");
-            // }
-            else
-            {
-                Console.WriteLine("Please enter an acceptable response.");
-            }
+            var guess = passingMaxValue / 2;
+            return guess;
         }
-        static void closingStatement()
+        static string IsYourNumber(int guess)
         {
-            Console.WriteLine("Bet you couldn't do that as quickly.");
+            Console.WriteLine($"Is you number {guess}? If not, please tell me if your number is higher or lower.");
+            var response = Console.ReadLine();
+            return response;
+        }
+        static string NumberIsHigherLoop(int passingMaxValue, int guess)
+        {
+            var newGuess = (passingMaxValue + guess) / 2;
+            Console.WriteLine($"Is you number {newGuess}? If not, please tell me if your number is higher or lower.");
+            var response = Console.ReadLine();
+            return response;
+
         }
     }
+
+    // Console.WriteLine($"Is you number {initialGuess}? Please type Y if so; otherwise type h " +
+    //               "if your number is higher or type l if your number is lower.");
+    // var response = Console.ReadLine();
+
+    // else if (negat == "h")
+    // {
+    //     var newGuess = maxGuess / 2;
+    //     Console.WriteLine($"Is {newGuess} your number?");
+    // }
+    // else if (response == "l")
+    // {
+    //     var newGuess = minGuess / 2;
+    //     Console.WriteLine($"Is {newGuess} your number?");
+    // }
+    // else
+    // {
+    //     Console.WriteLine("Please enter an acceptable response.");
+    //     // Console.WriteLine($"Is you number {initialGuess}? If not, please tell me if your number is higher or lower.");
+    //     // var response = Console.ReadLine();
+    // }
+
 }
+// Console.WriteLine("Bet you couldn't do that as quickly.");
+//         }
+//     }
+// }
 
 
