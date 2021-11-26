@@ -18,7 +18,7 @@ namespace NumberGuesserExplorerMode
 
             var response = IsYourNumber(guess);
 
-            if (affirmativeUserResponse.Contains(response))
+            if (highGuess.Contains(response))
             {
                 NumberIsHigherLoop(passingMaxValue, guess);
             }
@@ -62,7 +62,7 @@ namespace NumberGuesserExplorerMode
         static string NumberIsHigherLoop(int passingMaxValue, int guess)
         {
             var newGuess = (passingMaxValue + guess) / 2;
-            Console.WriteLine($"Is you number {newGuess}? If not, please tell me if your number is higher or lower.");
+            Console.WriteLine($"Is your number {newGuess}?");
             var response = Console.ReadLine();
             return response;
 
