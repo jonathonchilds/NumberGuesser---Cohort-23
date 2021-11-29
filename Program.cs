@@ -39,7 +39,7 @@ namespace NumberGuesserExplorerMode
         }
         public static void maxGuessesCalculator(ref int numberRangeMaximum, ref int numberRangeMinimum)
         {
-            var maxGuesses = Math.Round(Math.Log2((numberRangeMaximum - numberRangeMinimum) + 1));
+            var maxGuesses = Math.Round(Math.Log2((numberRangeMaximum - numberRangeMinimum)) + 1);
             Console.WriteLine($"This will only take me {maxGuesses} guesses to figure out, at most. ");
         }
 
@@ -66,12 +66,13 @@ namespace NumberGuesserExplorerMode
                 }
                 if (affirmativeUserResponse.Contains(userResponse))
                 {
+                    Console.WriteLine();
                     Console.WriteLine("I'm sure you could do this too, but likely not as quickly. ☺️");
                 }
-                else
-                {
-                    Console.WriteLine("Please enter an acceptable response.");
-                }
+                // else
+                // {
+                //     Console.WriteLine("Please enter an acceptable response.");
+                // }
             }
         }
 
