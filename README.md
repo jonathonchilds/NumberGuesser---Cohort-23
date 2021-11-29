@@ -36,18 +36,54 @@ Epic Mode
 
                                                                       PEDAC
 
+11/27
+
+After re-writing my algorithm on paper in excruciating detail (probably closer to what we've been taught), here we go again.
+
 ---
 
 PROBLEM:
 
 - create a greeting and describe the challenge to the user
 - the program will have bounds or parameters and will use integers
-- these parameters begin with a low of 1 and a high of 1024
+- these parameters begin with a low of 0 and a high of 1024
 - the program will be guessing a number of the user's choice, between 1 - 1024
 - ask user if their number is higher or lower than a certain program-generated-number
 - refine parameters, based on that response, to eventually hone in on the user's number
 
 EXAMPLES:
+
+(User chooses 617)
+
+Program starts with a maximum value of 1024 and a minimum value of 0.
+Maximum = 1024
+Minimum = 0
+Programs Guess = Maximum (1024) + minimum (0) / 2 = 512
+Programs Guess = 512
+
+Is your number {guess}? Please answer "y" if so, otherwise please input "h" for higher or "l" for lower.
+
+User inputs: HIGHER (h)
+
+    The MAX remains the same (1024) but the previous GUESS becomes the new MIN.
+        Maximum = 1024
+        Minimum = 512
+        Programs guess = max + min / 2
+        Programs guess = 768
+
+    Is your number {guess}? Please answer "y" if so, otherwise please input "h" for higher or "l" for lower.
+
+User inputs: LOWER (l)
+
+      The MAX is now the previous GUESS but the MIN remains the same
+          max = {guess}
+          min = {min}
+          guess = (max + min)/2
+
+    Is your number {guess}? Please answer "y" if so, otherwise please input "h" for higher or "l" for lower.
+    var guess = Console.ReadLine(); ("y", "h", or "l")
+
+    for (string )
 
 DATA STRUCTURE:
 
