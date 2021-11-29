@@ -7,7 +7,6 @@ namespace NumberGuesserExplorerMode
     {
         static void Main(string[] args)
         {
-            var affirmativeUserResponse = new List<string>() { "y", "Y", "Yes", "yes", "YES", "yasss", "YAS", "YUS", "yup", "yuppp", "yep", "Yeah", "Yep" };
             var negativeUserResponse = new List<string>() { "n", "N", "no", "NO", "No", "Nope", "nope", "Nerp", "nerp" };
             var lowerGuess = new List<string>() { "l", "L", "Lower", "lower", "LOWER" };
             var ListOfPossibleResponsesForGuessHigher = new[] { "h", "H", "higher", "Higher", "HIGHER" };
@@ -29,15 +28,15 @@ namespace NumberGuesserExplorerMode
 
         public static void ResponseLoop(ref int numberRangeMaximum, ref int numberRangeMinimum, ref int systemGuess, ref string userResponse)
         {
-            while (userResponse != "y")
+            var affirmativeUserResponse = new List<string>() { "y", "Y", "Yes", "yes", "YES", "yasss", "YAS", "YUS", "yup", "yuppp", "yep", "Yeah", "Yep" };
+
+            while (userResponse == "h")
             {
-                while (userResponse == "h")
-                {
-                    numberRangeMinimum = systemGuess;
-                    systemGuess = (numberRangeMaximum + numberRangeMinimum) / 2;
-                    Console.WriteLine($@"Is you number {systemGuess}? Please type ""y"" if so, otherwise, type ""h"" if your number is higher or ""l"" if your number is lower.");
-                    userResponse = Console.ReadLine();
-                }
+                numberRangeMinimum = systemGuess;
+                systemGuess = (numberRangeMaximum + numberRangeMinimum) / 2;
+                Console.WriteLine($@"Is you number {systemGuess}? Please type ""y"" if so, otherwise, type ""h"" if your number is higher or ""l"" if your number is lower.");
+                userResponse = Console.ReadLine();
+
                 while (userResponse == "l")
                 {
                     numberRangeMaximum = systemGuess;
@@ -45,7 +44,7 @@ namespace NumberGuesserExplorerMode
                     Console.WriteLine($@"Is you number {systemGuess}? Please type ""y"" if so, otherwise, type ""h"" if your number is higher or ""l"" if your number is lower.");
                     userResponse = Console.ReadLine();
                 }
-                if (userResponse == "y")
+                if (affirmativeUserResponse.Contains(userResponse))
                 {
                     Console.WriteLine("I'm sure you could do this too, but likely not as fast. ☺️");
                 }
