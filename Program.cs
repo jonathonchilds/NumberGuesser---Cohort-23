@@ -42,13 +42,13 @@ namespace NumberGuesserExplorerMode
         public static void maxGuessesCalculator(ref int numberRangeMaximum, ref int numberRangeMinimum)
         {
             var maxGuesses = Math.Round(Math.Log2((numberRangeMaximum - numberRangeMinimum)) + 1);
-            Console.WriteLine($"(At most, this will only take me {maxGuesses} guesses to figure out.)");
+            Console.WriteLine($"(I'll have this in less than {maxGuesses} guesses, guaranteed.)");
         }
 
         public static void ResponseLoop(ref int numberRangeMaximum, ref int numberRangeMinimum, ref int systemGuess, ref string userResponse)
         {
             // would love to import a text file containing every possible "yes" response; or, perhaps, just add radio buttons. That would be was easier. But the text file idea could apply for something like voice recognition
-            var affirmativeUserResponse = new List<string>() { "y", "Y", "Yes", "yes", "YES", "yasss", "YAS", "YUS", "yup", "yuppp", "yep", "Yeah", "Yep", "you got it!", "that's it!" };
+            var affirmativeUserResponse = new List<string>() { "y", "Y", "Yes", "yes", "YES", "yasss", "YAS", "YUS", "yup", "yuppp", "yep", "Yeah", "Yep", "you got it!", "that's it!", "yep!" };
             var List_Of_Possible_Responses_For_Guess_Lower = new List<string>() { "l", "L", "Lower", "lower", "LOWER" };
             var List_Of_Possible_Responses_For_Guess_Higher = new List<string>() { "h", "H", "higher", "Higher", "HIGHER" };
             var negativeUserResponse = new List<string>() { "n", "N", "no", "NO", "No", "Nope", "nope", "Nerp", "nerp" };
@@ -60,6 +60,7 @@ namespace NumberGuesserExplorerMode
                 {
                     numberRangeMinimum = systemGuess;
                     systemGuess = (numberRangeMaximum + numberRangeMinimum) / 2;
+                    Console.WriteLine();
                     Console.Write($"Is your number {systemGuess}? ");
                     userResponse = Console.ReadLine();
                     count++;
@@ -68,13 +69,15 @@ namespace NumberGuesserExplorerMode
                 {
                     numberRangeMaximum = systemGuess;
                     systemGuess = (numberRangeMaximum + numberRangeMinimum) / 2;
-                    Console.WriteLine($"Is your number {systemGuess}?");
+                    Console.WriteLine();
+                    Console.Write($"Is your number {systemGuess}? ");
                     userResponse = Console.ReadLine();
                     count++;
                 }
                 while (negativeUserResponse.Contains(userResponse))
                 {
-                    Console.WriteLine("Well then tell me if it's higher or lower, please.");
+                    Console.WriteLine();
+                    Console.Write("Well then tell me if it's higher or lower, please: ");
                     userResponse = Console.ReadLine();
                 }
             }
@@ -90,7 +93,7 @@ namespace NumberGuesserExplorerMode
                     Console.WriteLine("Only " + count + " guesses!");
                 }
                 Console.WriteLine();
-                Console.WriteLine("I'm sure you could do this too, but likely not as quickly. ☺️");
+                Console.WriteLine("I'm sure you could've done this too (but likely, not as quickly). ☺️");
                 Console.WriteLine("\n");
                 Console.WriteLine("\n");
 
