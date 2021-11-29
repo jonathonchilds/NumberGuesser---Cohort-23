@@ -74,8 +74,7 @@ namespace NumberGuesserExplorerMode
             Console.WriteLine("Do not enter your number! Keep it in your head, please.");
             Console.WriteLine();
             Console.WriteLine("Now do me a favor and type any number that is higher than the number you've picked.");
-            var userEnteredMaxValue = Console.ReadLine();
-            return userEnteredMaxValue;
+            return Console.ReadLine();
         }
     }
 }
