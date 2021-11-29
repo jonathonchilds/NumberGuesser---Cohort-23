@@ -7,36 +7,41 @@ namespace NumberGuesserExplorerMode
     {
         static void Main(string[] args)
         {
-            // var affirmativeUserResponse = new List<string>() { "y", "Y", "Yes", "yes", "YES", "yasss", "YAS", "YUS", "yup", "yuppp", "yep", "Yeah", "Yep" };
-            // var negativeUserResponse = new List<string>() { "n", "N", "no", "NO", "No", "Nope", "nope", "Nerp", "nerp" };
-            // var lowerGuess = new List<string>() { "l", "L", "Lower", "lower", "LOWER" };
-            // var ListOfPossibleResponsesForGuessHigher = new[] { "h", "H", "higher", "Higher", "HIGHER" };
+            var affirmativeUserResponse = new List<string>() { "y", "Y", "Yes", "yes", "YES", "yasss", "YAS", "YUS", "yup", "yuppp", "yep", "Yeah", "Yep" };
+            var negativeUserResponse = new List<string>() { "n", "N", "no", "NO", "No", "Nope", "nope", "Nerp", "nerp" };
+            var lowerGuess = new List<string>() { "l", "L", "Lower", "lower", "LOWER" };
+            var ListOfPossibleResponsesForGuessHigher = new[] { "h", "H", "higher", "Higher", "HIGHER" };
 
             // var guessHigher = PossibleResponsesForGuessHigher(); //can i pass the string through? I gave this method a variable because it wouldn't allow me 
             // to pass the method directly through the NumberIsHigherLoop method.
 
 
-            var rangeMax = int.Parse(Greeting());
-            var rangeMin = 0;
-            var systemGuess = (rangeMax + rangeMin) / 2;
+            var numberRangeMaximum = int.Parse(Greeting());
+            var numberRangeMinimum = 0;
+            var systemGuess = (numberRangeMaximum + numberRangeMinimum) / 2;
 
             Console.WriteLine($@"Is you number {systemGuess}? Please type ""y"" if so, otherwise, type ""h"" if your number is higher or ""l"" if your number is lower.");
             var userResponse = Console.ReadLine();
 
+            ResponseLoop(ref numberRangeMaximum, ref numberRangeMinimum, ref systemGuess, ref userResponse);
 
+        }
+
+        public static void ResponseLoop(ref int numberRangeMaximum, ref int numberRangeMinimum, ref int systemGuess, ref string userResponse)
+        {
             while (userResponse != "y")
             {
                 while (userResponse == "h")
                 {
-                    rangeMin = systemGuess;
-                    systemGuess = (rangeMax + rangeMin) / 2;
+                    numberRangeMinimum = systemGuess;
+                    systemGuess = (numberRangeMaximum + numberRangeMinimum) / 2;
                     Console.WriteLine($@"Is you number {systemGuess}? Please type ""y"" if so, otherwise, type ""h"" if your number is higher or ""l"" if your number is lower.");
                     userResponse = Console.ReadLine();
                 }
                 while (userResponse == "l")
                 {
-                    rangeMax = systemGuess;
-                    systemGuess = (rangeMax + rangeMin) / 2;
+                    numberRangeMaximum = systemGuess;
+                    systemGuess = (numberRangeMaximum + numberRangeMinimum) / 2;
                     Console.WriteLine($@"Is you number {systemGuess}? Please type ""y"" if so, otherwise, type ""h"" if your number is higher or ""l"" if your number is lower.");
                     userResponse = Console.ReadLine();
                 }
@@ -44,48 +49,11 @@ namespace NumberGuesserExplorerMode
                 {
                     Console.WriteLine("I'm sure you could do this too, but likely not as fast. ☺️");
                 }
+                // if (userResponse != 
+                // {
+                //     Console.WriteLine("Please enter an acceptable response.");
+                // }
             }
-
-            //_____________________________________________________________________________________________________________________
-
-            // for (userResponse = "h"; userResponse != "l"; var newGuess = (rangeMax + rangeMin) / 2)
-            // {
-            //     Console.WriteLine($@"Is you number {newGuess}?");
-
-            //     guess = max + min / 2
-            //     Programs guess = 768
-            // }
-            // User inputs: HIGHER(h)
-
-            //     The MAX remains the same(1024) but the previous GUESS becomes the new MIN.
-            //        Maximum = 1024
-            //         Minimum = 512
-            //         Programs guess = max + min / 2
-            //         Programs guess = 768
-
-
-            //     Is your number { guess}? Please answer "y" if so, otherwise please input "h" for higher or "l" for lower.
-
-
-            // while (response != "y")
-            // {
-            //     if (response == "h")
-            //     {
-            //         var newGuess = (MaxValue + guess) / 2;
-            //         Console.WriteLine($"Is your number {newGuess}?");
-
-            //         response = Console.ReadLine();
-            //     }
-            //     else if (response == "l")
-            //     {
-            //         var newGuess = (0 + guess) / 2;
-            //         Console.WriteLine($"Is your number {newGuess}?");
-            //         response = Console.ReadLine();
-            //     }
-            //     else
-            //     {
-            //         Console.WriteLine("Well that was easy.");
-            //     }
         }
         static string Greeting()
         {
@@ -113,7 +81,46 @@ namespace NumberGuesserExplorerMode
     }
 }
 
+//_____________________________________________________________________________________________________________________
 
+// for (userResponse = "h"; userResponse != "l"; var newGuess = (numberRangeMaximum + numberRangeMinimum) / 2)
+// {
+//     Console.WriteLine($@"Is you number {newGuess}?");
+
+//     guess = max + min / 2
+//     Programs guess = 768
+// }
+// User inputs: HIGHER(h)
+
+//     The MAX remains the same(1024) but the previous GUESS becomes the new MIN.
+//        Maximum = 1024
+//         Minimum = 512
+//         Programs guess = max + min / 2
+//         Programs guess = 768
+
+
+//     Is your number { guess}? Please answer "y" if so, otherwise please input "h" for higher or "l" for lower.
+
+
+// while (response != "y")
+// {
+//     if (response == "h")
+//     {
+//         var newGuess = (MaxValue + guess) / 2;
+//         Console.WriteLine($"Is your number {newGuess}?");
+
+//         response = Console.ReadLine();
+//     }
+//     else if (response == "l")
+//     {
+//         var newGuess = (0 + guess) / 2;
+//         Console.WriteLine($"Is your number {newGuess}?");
+//         response = Console.ReadLine();
+//     }
+//     else
+//     {
+//         Console.WriteLine("Well that was easy.");
+//     }
 
 // if (affirmativeUserResponse.Contains(response));
 // {
