@@ -23,92 +23,92 @@ namespace NumberGuesserExplorerMode
             Console.WriteLine($@"Is you number {systemGuess}? Please type ""y"" if so, otherwise, type ""h"" if your number is higher or ""l"" if your number is lower.");
             var userResponse = Console.ReadLine();
 
-            if (userResponse == "y")
+
+            while (userResponse != "y")
             {
-                Console.WriteLine("First guess? Well that was easy.");
+                if (userResponse == "h")
+                {
+                    while (userResponse == "h")
+                    {
+                        rangeMin = systemGuess;
+                        systemGuess = (rangeMax + rangeMin) / 2;
+                        Console.WriteLine($@"Is you number {systemGuess}? Please type ""y"" if so, otherwise, type ""h"" if your number is higher or ""l"" if your number is lower.");
+                        userResponse = Console.ReadLine();
+                    }
+                    while (userResponse == "l")
+                    {
+                        rangeMax = systemGuess;
+                        systemGuess = (rangeMax + rangeMin) / 2;
+                        Console.WriteLine($@"Is you number {systemGuess}? Please type ""y"" if so, otherwise, type ""h"" if your number is higher or ""l"" if your number is lower.");
+                        userResponse = Console.ReadLine();
+                    }
+
+                }
+
+                //_____________________________________________________________________________________________________________________
+
+                // for (userResponse = "h"; userResponse != "l"; var newGuess = (rangeMax + rangeMin) / 2)
+                // {
+                //     Console.WriteLine($@"Is you number {newGuess}?");
+
+                //     guess = max + min / 2
+                //     Programs guess = 768
+                // }
+                // User inputs: HIGHER(h)
+
+                //     The MAX remains the same(1024) but the previous GUESS becomes the new MIN.
+                //        Maximum = 1024
+                //         Minimum = 512
+                //         Programs guess = max + min / 2
+                //         Programs guess = 768
+
+
+                //     Is your number { guess}? Please answer "y" if so, otherwise please input "h" for higher or "l" for lower.
+
+
+                // while (response != "y")
+                // {
+                //     if (response == "h")
+                //     {
+                //         var newGuess = (MaxValue + guess) / 2;
+                //         Console.WriteLine($"Is your number {newGuess}?");
+
+                //         response = Console.ReadLine();
+                //     }
+                //     else if (response == "l")
+                //     {
+                //         var newGuess = (0 + guess) / 2;
+                //         Console.WriteLine($"Is your number {newGuess}?");
+                //         response = Console.ReadLine();
+                //     }
+                //     else
+                //     {
+                //         Console.WriteLine("Well that was easy.");
+                //     }
             }
-            else if (userResponse == "h")
+            static string Greeting()
             {
-                while (userResponse == "h")
-                {
-                    rangeMin = systemGuess;
-                    systemGuess = (rangeMax + rangeMin) / 2;
-                    Console.WriteLine($@"Is you number {systemGuess}? Please type ""y"" if so, otherwise, type ""h"" if your number is higher or ""l"" if your number is lower.");
-                    userResponse = Console.ReadLine();
-                }
-                while (userResponse == "l")
-                {
-                    rangeMax = systemGuess;
-                    systemGuess = (rangeMax + rangeMin) / 2;
-                    Console.WriteLine($@"Is you number {systemGuess}? Please type ""y"" if so, otherwise, type ""h"" if your number is higher or ""l"" if your number is lower.");
-                    userResponse = Console.ReadLine();
-                }
-
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine("**************************************************************************************");
+                Console.WriteLine("**************************************************************************************");
+                Console.WriteLine("                      WELCOME TO THE ALMIGHTY NUMBER GUESSER!                          ");
+                Console.WriteLine("**************************************************************************************");
+                Console.WriteLine("**************************************************************************************");
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine("Hello!");
+                Console.WriteLine();
+                Console.WriteLine("My goal is to guess a number that you have chosen in your mind.");
+                Console.WriteLine();
+                Console.WriteLine("You may pick any whole number you'd like.");
+                Console.WriteLine();
+                Console.WriteLine("Do not enter your number! Keep it in your head, please.");
+                Console.WriteLine();
+                Console.WriteLine("Now do me a favor and type any number that is higher than the number you've picked.");
+                var userEnteredMaxValue = Console.ReadLine();
+                return userEnteredMaxValue;
             }
-
-            //_____________________________________________________________________________________________________________________
-
-            // for (userResponse = "h"; userResponse != "l"; var newGuess = (rangeMax + rangeMin) / 2)
-            // {
-            //     Console.WriteLine($@"Is you number {newGuess}?");
-
-            //     guess = max + min / 2
-            //     Programs guess = 768
-            // }
-            // User inputs: HIGHER(h)
-
-            //     The MAX remains the same(1024) but the previous GUESS becomes the new MIN.
-            //        Maximum = 1024
-            //         Minimum = 512
-            //         Programs guess = max + min / 2
-            //         Programs guess = 768
-
-
-            //     Is your number { guess}? Please answer "y" if so, otherwise please input "h" for higher or "l" for lower.
-
-
-            // while (response != "y")
-            // {
-            //     if (response == "h")
-            //     {
-            //         var newGuess = (MaxValue + guess) / 2;
-            //         Console.WriteLine($"Is your number {newGuess}?");
-
-            //         response = Console.ReadLine();
-            //     }
-            //     else if (response == "l")
-            //     {
-            //         var newGuess = (0 + guess) / 2;
-            //         Console.WriteLine($"Is your number {newGuess}?");
-            //         response = Console.ReadLine();
-            //     }
-            //     else
-            //     {
-            //         Console.WriteLine("Well that was easy.");
-            //     }
-        }
-        static string Greeting()
-        {
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine("**************************************************************************************");
-            Console.WriteLine("**************************************************************************************");
-            Console.WriteLine("                      WELCOME TO THE ALMIGHTY NUMBER GUESSER!                          ");
-            Console.WriteLine("**************************************************************************************");
-            Console.WriteLine("**************************************************************************************");
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine("Hello!");
-            Console.WriteLine();
-            Console.WriteLine("My goal is to guess a number that you have chosen in your mind.");
-            Console.WriteLine();
-            Console.WriteLine("You may pick any whole number you'd like.");
-            Console.WriteLine();
-            Console.WriteLine("Do not enter your number! Keep it in your head, please.");
-            Console.WriteLine();
-            Console.WriteLine("Now do me a favor and type any number that is higher than the number you've picked.");
-            var userEnteredMaxValue = Console.ReadLine();
-            return userEnteredMaxValue;
         }
     }
 }
