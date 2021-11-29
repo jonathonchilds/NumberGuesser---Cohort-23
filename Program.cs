@@ -7,25 +7,23 @@ namespace NumberGuesserExplorerMode
     {
         static void Main(string[] args)
         {
-            var negativeUserResponse = new List<string>() { "n", "N", "no", "NO", "No", "Nope", "nope", "Nerp", "nerp" };
-
-
-
-            // var guessHigher = PossibleResponsesForGuessHigher(); //can i pass the string through? I gave this method a variable because it wouldn't allow me 
-            // to pass the method directly through the NumberIsHigherLoop method.
-
+            //var negativeUserResponse = new List<string>() { "n", "N", "no", "NO", "No", "Nope", "nope", "Nerp", "nerp" };
 
             var numberRangeMaximum = int.Parse(Greeting());
             var numberRangeMinimum = 0;
             var systemGuess = (numberRangeMaximum + numberRangeMinimum) / 2;
-
-            //var maxGuesses = Math.log((numberRangeMaximum - numberRangeMinimum) + 1);
-
+            Console.WriteLine();
+            maxGuessesCalculator(ref numberRangeMaximum, ref numberRangeMinimum);
+            Console.WriteLine();
             Console.WriteLine($@"Is your number {systemGuess}? Please type ""y"" if so, otherwise, type ""h"" if your number is higher or ""l"" if your number is lower.");
             var userResponse = Console.ReadLine();
-
             ResponseLoop(ref numberRangeMaximum, ref numberRangeMinimum, ref systemGuess, ref userResponse);
+        }
 
+        public static void maxGuessesCalculator(ref int numberRangeMaximum, ref int numberRangeMinimum)
+        {
+            var maxGuesses = Math.Round(Math.Log2((numberRangeMaximum - numberRangeMinimum) + 1));
+            Console.WriteLine($"This will only take me {maxGuesses} guesses to figure out, at most. ");
         }
 
         public static void ResponseLoop(ref int numberRangeMaximum, ref int numberRangeMinimum, ref int systemGuess, ref string userResponse)
