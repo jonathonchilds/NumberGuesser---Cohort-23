@@ -7,19 +7,36 @@ namespace NumberGuesserExplorerMode
     {
         static void Main(string[] args)
         {
-            //var negativeUserResponse = new List<string>() { "n", "N", "no", "NO", "No", "Nope", "nope", "Nerp", "nerp" };
-
             var numberRangeMaximum = int.Parse(Greeting());
             var numberRangeMinimum = 0;
             var systemGuess = (numberRangeMaximum + numberRangeMinimum) / 2;
             Console.WriteLine();
             maxGuessesCalculator(ref numberRangeMaximum, ref numberRangeMinimum);
             Console.WriteLine();
-            Console.WriteLine($@"Is your number {systemGuess}? Please type ""y"" if so, otherwise, type ""h"" if your number is higher or ""l"" if your number is lower.");
+            Console.WriteLine($@"Is your number {systemGuess}?");
             var userResponse = Console.ReadLine();
             ResponseLoop(ref numberRangeMaximum, ref numberRangeMinimum, ref systemGuess, ref userResponse);
         }
-
+        static string Greeting()
+        {
+            Console.WriteLine("\n");
+            Console.WriteLine("**************************************************************************************");
+            Console.WriteLine("**************************************************************************************");
+            Console.WriteLine("                      WELCOME TO THE ALMIGHTY NUMBER GUESSER!                          ");
+            Console.WriteLine("**************************************************************************************");
+            Console.WriteLine("**************************************************************************************");
+            Console.WriteLine("\n");
+            Console.WriteLine("Hello!");
+            Console.WriteLine();
+            Console.WriteLine("My goal is to guess a number that you have chosen in your mind.");
+            Console.WriteLine();
+            Console.WriteLine("You may pick any whole number you'd like.");
+            Console.WriteLine();
+            Console.WriteLine("Do not enter your number! Keep it in your head, please.");
+            Console.WriteLine();
+            Console.WriteLine("Now do me a favor and type any number that is higher than the number you've picked.");
+            return Console.ReadLine();
+        }
         public static void maxGuessesCalculator(ref int numberRangeMaximum, ref int numberRangeMinimum)
         {
             var maxGuesses = Math.Round(Math.Log2((numberRangeMaximum - numberRangeMinimum) + 1));
@@ -49,7 +66,7 @@ namespace NumberGuesserExplorerMode
                 }
                 if (affirmativeUserResponse.Contains(userResponse))
                 {
-                    Console.WriteLine("I'm sure you could do this too, but likely not as fast. ☺️");
+                    Console.WriteLine("I'm sure you could do this too, but likely not as quickly. ☺️");
                 }
                 else
                 {
@@ -57,29 +74,11 @@ namespace NumberGuesserExplorerMode
                 }
             }
         }
-        static string Greeting()
-        {
-            Console.WriteLine("\n");
-            Console.WriteLine("**************************************************************************************");
-            Console.WriteLine("**************************************************************************************");
-            Console.WriteLine("                      WELCOME TO THE ALMIGHTY NUMBER GUESSER!                          ");
-            Console.WriteLine("**************************************************************************************");
-            Console.WriteLine("**************************************************************************************");
-            Console.WriteLine("\n");
-            Console.WriteLine("Hello!");
-            Console.WriteLine();
-            Console.WriteLine("My goal is to guess a number that you have chosen in your mind.");
-            Console.WriteLine();
-            Console.WriteLine("You may pick any whole number you'd like.");
-            Console.WriteLine();
-            Console.WriteLine("Do not enter your number! Keep it in your head, please.");
-            Console.WriteLine();
-            Console.WriteLine("Now do me a favor and type any number that is higher than the number you've picked.");
-            return Console.ReadLine();
-        }
+
     }
 }
 
+//var negativeUserResponse = new List<string>() { "n", "N", "no", "NO", "No", "Nope", "nope", "Nerp", "nerp" };
 //_____________________________________________________________________________________________________________________
 
 // for (userResponse = "h"; userResponse != "l"; var newGuess = (numberRangeMaximum + numberRangeMinimum) / 2)
