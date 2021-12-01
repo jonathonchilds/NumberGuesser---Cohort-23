@@ -44,16 +44,15 @@ namespace NumberGuesserExplorerMode
             var maxGuesses = Math.Round(Math.Log2((numberRangeMaximum - numberRangeMinimum)) + 1);
             Console.WriteLine($"(I'll have this in less than {maxGuesses} guesses, guaranteed.)");
         }
-
         public static void ResponseLoop(ref int numberRangeMaximum, ref int numberRangeMinimum, ref int systemGuess, ref string userResponse)
         {
-            // would love to import a text file containing every possible "yes" response; or, perhaps, just add radio buttons. That would be was easier. But the text file idea could apply for something like voice recognition
             var affirmativeUserResponse = new List<string>() { "y", "Y", "Yes", "yes", "YES", "yasss", "YAS", "YUS", "yup", "yuppp", "yep", "Yeah", "Yep", "you got it!", "that's it!", "yep!" };
             var List_Of_Possible_Responses_For_Guess_Lower = new List<string>() { "l", "L", "Lower", "lower", "LOWER" };
             var List_Of_Possible_Responses_For_Guess_Higher = new List<string>() { "h", "H", "higher", "Higher", "HIGHER" };
             var negativeUserResponse = new List<string>() { "n", "N", "no", "NO", "No", "Nope", "nope", "Nerp", "nerp" };
-            //how to make loop return to beginning while condition is user enters anything other than a provided list?
+
             int count = 1;
+
             while (!affirmativeUserResponse.Contains(userResponse))
             {
                 while (List_Of_Possible_Responses_For_Guess_Higher.Contains(userResponse))
