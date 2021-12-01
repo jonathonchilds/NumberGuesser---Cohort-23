@@ -7,8 +7,8 @@ namespace NumberGuesserExplorerMode
     {
         static void Main(string[] args)
         {
-            var numberRangeMaximum = int.Parse(Greeting());
-            var numberRangeMinimum = 0;
+            var numberRangeMaximum = long.Parse(Greeting());
+            long numberRangeMinimum = 0;
             var systemGuess = (numberRangeMaximum + numberRangeMinimum) / 2;
             Console.WriteLine();
             maxGuessesCalculator(ref numberRangeMaximum, ref numberRangeMinimum);
@@ -39,12 +39,12 @@ namespace NumberGuesserExplorerMode
             Console.WriteLine();
             return Console.ReadLine();
         }
-        public static void maxGuessesCalculator(ref int numberRangeMaximum, ref int numberRangeMinimum)
+        public static void maxGuessesCalculator(ref long numberRangeMaximum, ref long numberRangeMinimum)
         {
             var maxGuesses = Math.Round(Math.Log2((numberRangeMaximum - numberRangeMinimum)) + 1);
             Console.WriteLine($"(I'll have this in less than {maxGuesses} guesses, guaranteed.)");
         }
-        public static void ResponseLoop(ref int numberRangeMaximum, ref int numberRangeMinimum, ref int systemGuess, ref string userResponse)
+        public static void ResponseLoop(ref long numberRangeMaximum, ref long numberRangeMinimum, ref long systemGuess, ref string userResponse)
         {
             var affirmativeUserResponse = new List<string>() { "y", "Y", "Yes", "yes", "YES", "yasss", "YAS", "YUS", "yup", "yuppp", "yep", "Yeah", "Yep", "you got it!", "that's it!", "yep!" };
             var List_Of_Possible_Responses_For_Guess_Lower = new List<string>() { "l", "L", "Lower", "lower", "LOWER" };
